@@ -64,7 +64,11 @@ sub FilterMenuItems
            
      foreach my $level ($dw->{logger}->accepted_levels())
        {
-         my $value = $dw->tagCget($level => '-state') || 'normal';
+         # find if the tag exists or not
+         my @ranges = $dw->tagRanges($level);
+         my $value = scalar @ranges ? $dw->tagCget($level => '-state') 
+           || 'normal' : 'normal';
+
          #print "Adding level $level in menu\n";
          my $cb = sub 
            {
