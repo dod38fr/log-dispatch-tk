@@ -169,7 +169,7 @@ minimum level.
 Dominique Dumont <Dominique_Dumont@hp.com> using L<Log::Dispatch> from
 Dave Rolsky, <autarch@urth.org>
 
-Copyright (c) 2000 Dominique Dumont. All rights reserved.  This
+Copyright (c) 2000-2001 Dominique Dumont. All rights reserved.  This
 program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 
