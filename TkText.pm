@@ -62,7 +62,7 @@ sub FilterMenuItems
      
      #print "Tags are ",$dw->tagNames,"\n";
            
-     foreach my $level ($dw->{logger}->all_levels())
+     foreach my $level ($dw->{logger}->accepted_levels())
        {
          my $value = $dw->tagCget($level => '-state') || 'normal';
          #print "Adding level $level in menu\n";
@@ -85,7 +85,7 @@ sub FilterMenuItems
      return \@buttons ;
    }
 
-sub log
+sub log_message
   {
      my ($dw,%params) = @_;
      
@@ -155,7 +155,7 @@ The following methods were added to the L<Tk::ROText> widget:
 
 Returns the buddy ToTk object.
 
-=head2 log( level => $, message => $ )
+=head2 log_message( level => $, message => $ )
 
 Sends a message if the level is greater than or equal to the object's
 minimum level.
