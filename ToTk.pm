@@ -26,6 +26,7 @@ sub log
   {
     my $self = shift;
     my %params = @_;
+    return unless $self->_should_log($params{level});
     
     chomp $params{message};
     my $nb = $self->_level_as_number($params{level}) ;
