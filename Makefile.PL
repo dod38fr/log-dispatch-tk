@@ -19,5 +19,5 @@ WriteMakefile
    },
    ($] >= 5.005 ?
     (ABSTRACT   => 'Tk i/f class and Text widget for Log::Dispatch messages',
-     AUTHOR     => 'Dominique Dumont (domi@barrayar.grenoble.hp.com)') : ())
+     AUTHOR     => 'Dominique Dumont (ddumont@cpan.org)') : ())
   );
