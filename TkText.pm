@@ -85,7 +85,7 @@ sub FilterMenuItems
      return \@buttons ;
    }
 
-sub log_message
+sub log
   {
      my ($dw,%params) = @_;
      
