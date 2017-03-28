@@ -6,11 +6,6 @@ WriteMakefile
    'NAME'	=> 'Log-Dispatch-Tk',
    'VERSION' => '1.7',
    'dist' => {COMPRESS=>'gzip -9f', SUFFIX => 'gz'},
-   PM =>
-   {
-    'TkText.pm' => '$(INST_LIB)/Log/Dispatch/TkText.pm',
-    'ToTk.pm'   => '$(INST_LIB)/Log/Dispatch/ToTk.pm'
-   },
    'PREREQ_PM' =>
    {
     'Tk' => 0,
