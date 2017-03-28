@@ -145,7 +145,7 @@ minimum level.
 
 =head1 AUTHOR
 
-Dominique Dumont <Dominique.Dumont@hp.com> using L<Log::Dispatch> and
+Dominique Dumont <ddumont@cpan.org> using L<Log::Dispatch> and
 L<Log::Dispatch::Output> from Dave Rolsky, autarch@urth.org
 
 Copyright (c) 2000, 2003 Dominique Dumont
