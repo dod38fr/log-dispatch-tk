@@ -18,6 +18,6 @@ WriteMakefile
     'Log::Dispatch::Output' => '1.011'
    },
    ($] >= 5.005 ?
-    (ABSTRACT   => 'Tk i/f class and Text widget for Log::Dispatch messages',
+    (ABSTRACT   => 'Tk text widget for Log::Dispatch messages',
      AUTHOR     => 'Dominique Dumont (ddumont@cpan.org)') : ())
   );
