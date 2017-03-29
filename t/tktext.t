@@ -1,4 +1,4 @@
-# Before `make install' is performed this script should be runnable with
+# -*- cperl -*-
 use warnings FATAL => qw(all);
 # `make test'. After `make install' it should work as `perl test.pl'
 
@@ -18,7 +18,8 @@ use ExtUtils::testlib;
 use Log::Dispatch;
 use Log::Dispatch::TkText ;
 
-my $trace = shift || 0 ;
+my $arg = shift || '';
+my $keep_running = $arg =~ /i/ ;
 
 my $dispatch = Log::Dispatch->new;
 
@@ -34,11 +35,13 @@ ok($tklog) ;
 
 $dispatch->add($tklog->logger) ;
 
-$dispatch -> log 
-  (
-   level => 'info',
-   message => "You can use <Button-3> Filter menu to filter log levels\n".
-   "Please use <Button-3> File->exit to finish the test") ;
+$dispatch->log(
+    level => 'info',
+    message => "Test exits after 5s unless the script is invoked with 'i' argument\n"
+        . "E.g. 'perl -Ilib $0 i'\n"
+        . "You can use <Button-3> Filter menu to filter log levels\n"
+        . "Please use <Button-3> File->exit to finish the test"
+    );
 
 $dispatch -> log 
   (
@@ -65,5 +68,7 @@ foreach my $level ($tklog->logger->all_levels())
   {
     $dispatch -> log (level => $level, message => "another very long $level bla-bla\nWell, not so long\n") ;
   }
+
+$mw->after(5000, sub { $mw->destroy;}) unless $keep_running;
 
 MainLoop ; # Tk's
