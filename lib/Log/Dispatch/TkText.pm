@@ -17,7 +17,7 @@ sub InitObject
     my ($dw,$args) = @_ ;
 
     my %params ;
-    foreach my $key (qw/name min_level max_level/)
+    foreach my $key (qw/name min_level max_level hide_label/)
       {
         $params{$key} = delete $args->{$key} if defined $args->{$key} ;
         $params{$key} = delete $args->{'-'.$key} if defined $args->{'-'.$key} ;
@@ -93,15 +93,14 @@ sub FilterMenuItems
      return \@buttons ;
    }
 
-sub log
-  {
-     my ($dw,%params) = @_;
-     
-     $dw->insert('end',"$params{level}\n",
-                 [$params{level}, 'label' ]);
-     $dw->insert('end',"$params{message}\n",
-                 [$params{level}, 'message' ]);
-  }
+sub log {
+    my ($dw,%params) = @_;
+
+    if (not $params{hide_label}) {
+        $dw->insert('end',"$params{level}\n", [$params{level}, 'label' ]);
+    }
+    $dw->insert('end',"$params{message}\n", [$params{level}, 'message' ]);
+}
 
 __END__
 
@@ -119,8 +118,13 @@ Log::Dispatch::TkText - Text widget for Log::Dispatch
 
  my $mw = MainWindow-> new ;
 
- my $tklog = $mw->Scrolled('LogText', name => 'tk',
-                            min_level => 'debug');
+ my $tklog = $mw->Scrolled(
+   'LogText',
+   name => 'tk',
+   min_level => 'debug',
+   hide_label => 1 , # optional
+ );
+
  $tklog -> pack ;
 
  # add the logger object to $dispatch (not the widget !!)
@@ -141,6 +145,13 @@ L<Tk::ROText>) for logging through the L<Log::Dispatch> module.
 Note that this widget works with a buddy L<Log::Dispatch::ToTk> object
 which will be created by the widget's constructor.  The reference to
 this buddy object must be added to the main log dispatcher.
+
+=head1 Parameters
+
+=head2 hide_label
+
+By default, log levels are shown in the widget. You can set this
+parameter to one to hide them.
 
 =head1 Filters
 
@@ -176,6 +187,10 @@ Dave Rolsky, <autarch@urth.org>
 Copyright (c) 2000-2002 Dominique Dumont
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
+
+=head1 CONTRIBUTORS
+
+ Tom McMeekin
 
 =head1 SEE ALSO
 

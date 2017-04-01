@@ -16,6 +16,8 @@ sub new
 
     my $self = bless {} , $class;
 
+    $self->{hide_label} = delete $params{-hide_label} || delete $params{hide_label} || 0;
+
     $self->{widget} = delete $params{-widget} || delete $params{widget} ;
 
     # remove leading '-' (Tk style)
@@ -39,6 +41,7 @@ sub log
     chomp $params{message};
     my $nb = $self->_level_as_number($params{level}) ;
     $params{level} = $self->{level_names}[$nb] ;
+    $params{hide_label} = $self->{hide_label} ;
     $self->{widget}->log(%params);
 }
 
