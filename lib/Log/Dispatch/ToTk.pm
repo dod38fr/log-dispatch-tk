@@ -6,7 +6,7 @@ use vars qw($VERSION);
 use base qw(Log::Dispatch::Output);
 use fields qw/widget/ ;
 
-$VERSION = sprintf "%d.%03d", q$Revision$ =~ /(\d+)\.(\d+)/;
+$VERSION = '1.8';
 
 sub new
   {

@@ -8,7 +8,7 @@ use Tk::ROText ;
 use Log::Dispatch::ToTk;
 use base qw(Tk::Derived Tk::ROText);
 
-$VERSION = sprintf "%d.%03d", q$Revision$ =~ /(\d+)\.(\d+)/;
+$VERSION = '1.8';
 
 Tk::Widget->Construct('LogText');
 
