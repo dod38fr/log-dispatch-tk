@@ -9,9 +9,7 @@ use warnings FATAL => qw(all);
 # (It may become useful if the test is moved to ./t subdirectory.)
 
 use strict;
-use Test ;
-
-BEGIN { plan tests => 2 ; }
+use Test::More ;
 
 use Tk ;
 
@@ -19,14 +17,16 @@ use ExtUtils::testlib;
 use Log::Dispatch;
 use Log::Dispatch::TkText ;
 
+my $mw = eval { MainWindow->new };
+plan skip_all => "Cannot create main window: $@" if !$mw;
+plan tests => 2;
+
 my $arg = shift || '';
 my $keep_running = $arg =~ /i/ ;
 
 my $dispatch = Log::Dispatch->new;
 
 ok($dispatch) ;
-
-my $mw = MainWindow-> new ;
 
 my $tklog = $mw->Scrolled('LogText', name => 'tk',
                           min_level => 'info');

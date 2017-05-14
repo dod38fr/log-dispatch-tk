@@ -1,22 +1,17 @@
-# Before `make install' is performed this script should be runnable with
-use warnings FATAL => qw(all);
-# `make test'. After `make install' it should work as `perl test.pl'
-
-######################### We start with some black magic to print on failure.
-
-# Change 1..1 below to 1..last_test_to_print .
-# (It may become useful if the test is moved to ./t subdirectory.)
+# -*- cperl -*-
 
 use strict;
-use Test ;
-
-BEGIN { plan tests => 2 ; }
+use Test::More ;
 
 use Tk ;
 
 use ExtUtils::testlib;
 use Log::Dispatch;
 use Log::Dispatch::TkText ;
+
+my $mw = eval { MainWindow->new };
+plan skip_all => "Cannot create main window: $@" if !$mw;
+plan tests => 2;
 
 my $arg = shift || '';
 my $keep_running = $arg =~ /i/ ;
@@ -25,7 +20,6 @@ my $dispatch = Log::Dispatch->new;
 
 ok($dispatch) ;
 
-my $mw = MainWindow-> new ;
 
 my $tklog = $mw->Scrolled(
     'LogText', name => 'tk',
