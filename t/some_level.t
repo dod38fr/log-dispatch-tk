@@ -21,6 +21,9 @@ my $mw = eval { MainWindow->new };
 plan skip_all => "Cannot create main window: $@" if !$mw;
 plan tests => 2;
 
+# See https://rt.cpan.org/Ticket/Display.html?id=121483
+$mw->geometry('+10+10'); # for twm
+
 my $arg = shift || '';
 my $keep_running = $arg =~ /i/ ;
 
