@@ -2,12 +2,11 @@ package Log::Dispatch::ToTk;
 
 use warnings;
 use strict;
-use vars qw($VERSION);
 
 use base qw(Log::Dispatch::Output);
 use fields qw/widget/ ;
 
-$VERSION = '1.9';
+our $VERSION = '2.01';
 
 sub new
   {
