@@ -1,5 +1,6 @@
 package Log::Dispatch::ToTk;
 
+use warnings;
 use strict;
 use vars qw($VERSION);
 

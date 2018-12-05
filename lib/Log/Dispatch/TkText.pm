@@ -1,6 +1,7 @@
 package Log::Dispatch::TkText;
 
 use strict;
+use warnings;
 use vars qw($VERSION);
 
 use Tk;
